@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <item android:id="@+id/weather"
+       android:icon="@drawable/cloudy"
+       android:title="Weather" />
+    <item android:id="@+id/cityweather"
+        android:icon="@drawable/city"
+        android:title="cityWeather"/>
+    <item android:id="@+id/weeklyReport"
+        android:title="weekly report"
+        android:icon="@drawable/seven"/>
+    <item android:id="@+id/settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="settings"/>
+
+
+</menu>

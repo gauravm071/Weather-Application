@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Intern Project</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="city_name">
+        <item>Delhi</item>
+        <item>Noida</item>
+        <item>Mumbai</item>
+    </string-array>
+    <string name="celcius">1%s &#xb0;</string>
+</resources>
