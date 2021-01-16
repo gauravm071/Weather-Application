@@ -91,6 +91,19 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode==REQUESTCODE && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+            enableGPS();
+        }
+        else{
+            Toast.makeText(this, "Location Permission is Required", Toast.LENGTH_SHORT).show();
+            getPermission();
+        }
+    }
+
     private void enableGPS() {
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setInterval(4000);
@@ -104,13 +117,14 @@ public class LoginActivity extends AppCompatActivity {
         task.addOnSuccessListener(this, new OnSuccessListener<LocationSettingsResponse>() {
             @Override
             public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-                setUpLocationListener();
+                Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
             }
         });
+
+
         task.addOnFailureListener(this, new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                 if (e instanceof ResolvableApiException) {
                     try {
                         ResolvableApiException resolvable = (ResolvableApiException) e;
@@ -121,7 +135,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+        setUpLocationListener();
     }
+
 
     public void userLogin(View view) {
         if (username.getText().toString().length() > 0 && lat.length() > 0 && lon.length() > 0) {
