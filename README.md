@@ -10,3 +10,6 @@ Screenshots
 
 ![Screenshot from 2021-01-11 17-05-01](https://user-images.githubusercontent.com/56672381/104178082-c9c10b80-542f-11eb-8046-1c77634d3079.png)
 
+![Screenshot from 2021-01-11 17-05-03](https://user-images.githubusercontent.com/56672381/104811137-809dfc80-581f-11eb-971b-0f20c61583f6.png)
+
+
