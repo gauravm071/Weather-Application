@@ -1,6 +1,6 @@
 package com.example.internproject;
 
 public class sfName {
-    static  String apiKey="6a1adf3ffd4918763d01d3963817f60b";
+    static  String apiKey="PASTE YOUR API KEY HERE FROM  --------->>> https://openweathermap.org/api";
     public static String sharedPreferencename="mySharedPrefernce";
 }
