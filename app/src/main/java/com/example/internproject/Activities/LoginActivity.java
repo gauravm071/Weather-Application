@@ -1,6 +1,7 @@
 package com.example.internproject.Activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -22,7 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.internproject.Names;
+import com.example.internproject.sfName;
 import com.example.internproject.R;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -58,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.login);
         error = findViewById(R.id.error);
         progressBar = findViewById(R.id.progressBar);
-        SharedPreferences sharedPreferences = getSharedPreferences(Names.sharedPreferencename, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(sfName.sharedPreferencename, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("celcius_state", "checked");
         editor.putString("fahrenite_state", "unchecked");
@@ -118,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
                 Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                setUpLocationListener();
             }
         });
 
@@ -135,13 +137,25 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        setUpLocationListener();
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CHECK_SETTINGS && resultCode== RESULT_OK){
+            Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Gps is Required", Toast.LENGTH_SHORT).show();
+            enableGPS();
+        }
     }
 
 
     public void userLogin(View view) {
         if (username.getText().toString().length() > 0 && lat.length() > 0 && lon.length() > 0) {
-            SharedPreferences sharedPreferences = getSharedPreferences(Names.sharedPreferencename, MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getSharedPreferences(sfName.sharedPreferencename, MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("username", username.getText().toString()).apply();
             String myusername = username.getText().toString();
@@ -163,7 +177,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void save_lat_lon() {
-        SharedPreferences sharedPreferences = getSharedPreferences(Names.sharedPreferencename, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(sfName.sharedPreferencename, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("lat", lat);
         editor.putString("lon", lon);

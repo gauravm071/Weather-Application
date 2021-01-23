@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.internproject.ApiRepository;
 import com.example.internproject.Interface.WeatherInterface;
-import com.example.internproject.Names;
+import com.example.internproject.sfName;
 import com.example.internproject.R;
 import com.example.internproject.WeatherInfoWithCity.WeatherInfo;
 import com.example.internproject.WeatherInfoWithCurrentLocation.Daily;
@@ -91,7 +91,7 @@ public class SevenDaysFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(Names.sharedPreferencename, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(sfName.sharedPreferencename, Context.MODE_PRIVATE);
         lat = sharedPreferences.getString("lat", "0.0");
         lon = sharedPreferences.getString("lon", "0.0");
         String unit = sharedPreferences.getString("unit", "metric");

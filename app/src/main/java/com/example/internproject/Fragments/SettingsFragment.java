@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.internproject.Names;
+import com.example.internproject.sfName;
 import com.example.internproject.R;
 
 /**
@@ -154,7 +154,7 @@ public class SettingsFragment extends Fragment {
     }
 
     private void getSharedPrefernceData() {
-        sharedPreferences = this.getActivity().getSharedPreferences(Names.sharedPreferencename, Context.MODE_PRIVATE);
+        sharedPreferences = this.getActivity().getSharedPreferences(sfName.sharedPreferencename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         unit = sharedPreferences.getString("unit", null);
         myusername = sharedPreferences.getString("username", "");

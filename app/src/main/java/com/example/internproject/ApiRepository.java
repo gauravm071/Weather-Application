@@ -14,7 +14,7 @@ import retrofit2.Response;
 public class ApiRepository {
     public static void getCurrentLocationWeatherData(String lat, String lon, String unit, WeatherInterface weatherInterface){
         ApiInterface apiInterface=getRetrofit.getInstance(ApiInterface.currentLocationBaseUrl).create(ApiInterface.class);
-        Call<WeatherData> call= apiInterface.getCurrentLocationWeatherData(lat,lon,unit, Names.apiKey);
+        Call<WeatherData> call= apiInterface.getCurrentLocationWeatherData(lat,lon,unit, sfName.apiKey);
         call.enqueue(new Callback<WeatherData>() {
             @Override
             public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
@@ -31,7 +31,7 @@ public class ApiRepository {
 
     public static void getWeatherWithCity(String city,String unit, WeatherInterface weatherInterface){
         ApiInterface apiInterface=getRetrofit.getInstance(ApiInterface.currentLocationBaseUrl).create(ApiInterface.class);
-        Call<WeatherInfo> call= apiInterface.getWeatherWithCity(city,unit, Names.apiKey);
+        Call<WeatherInfo> call= apiInterface.getWeatherWithCity(city,unit, sfName.apiKey);
         call.enqueue(new Callback<WeatherInfo>() {
             @Override
             public void onResponse(Call<WeatherInfo> call, Response<WeatherInfo> response) {

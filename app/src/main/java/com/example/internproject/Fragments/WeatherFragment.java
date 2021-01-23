@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.internproject.ApiRepository;
-import com.example.internproject.Names;
+import com.example.internproject.sfName;
 import com.example.internproject.R;
 import com.example.internproject.WeatherInfoWithCurrentLocation.WeatherData;
 import com.example.internproject.Interface.WeatherInterface;
@@ -88,7 +88,7 @@ public class WeatherFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Initialization(view);
-        SharedPreferences preferences = this.getActivity().getSharedPreferences(Names.sharedPreferencename, Context.MODE_PRIVATE);
+        SharedPreferences preferences = this.getActivity().getSharedPreferences(sfName.sharedPreferencename, Context.MODE_PRIVATE);
         String myusername = preferences.getString("username", "NO USERNAME");
         username.setText(myusername);
         getWeatherData();
@@ -107,7 +107,7 @@ public class WeatherFragment extends Fragment {
     }
 
     private void getWeatherData() {
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(Names.sharedPreferencename, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(sfName.sharedPreferencename, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         String unit = sharedPreferences.getString("unit", "metric");
         String lat = sharedPreferences.getString("lat", "0.0");
@@ -140,8 +140,8 @@ public class WeatherFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     private void setData(WeatherData weatherData) {
         double temp = weatherData.getCurrent().getTemp();
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(Names.sharedPreferencename, Context.MODE_PRIVATE);
-        String unit = sharedPreferences.getString("unit", "celcius");
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(sfName.sharedPreferencename, Context.MODE_PRIVATE);
+        String unit = sharedPreferences.getString("unit", "metric");
 
         if (unit.equals("metric")) {
             temperature.setText(String.valueOf(weatherData.getCurrent().getTemp()) + " \u2103");

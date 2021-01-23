@@ -3,14 +3,12 @@ package com.example.internproject;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.internproject.WeatherInfoWithCurrentLocation.Daily;
@@ -45,7 +43,7 @@ public class sevenDaysWeatherAdapter extends RecyclerView.Adapter<sevenDaysWeath
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = sevenDaysWeatherlist.get(position).getDt();
         holder.date.setText(dateString);
-        SharedPreferences sharedPreferences = context.getSharedPreferences(Names.sharedPreferencename, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(sfName.sharedPreferencename, Context.MODE_PRIVATE);
         String unit = sharedPreferences.getString("unit", "metric");
         if (unit.equals("metric")) {
             holder.temperature.setText(String.valueOf(sevenDaysWeatherlist.get(position).getTemp().getDay()) + " \u2103");
