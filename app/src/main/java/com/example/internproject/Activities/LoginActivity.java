@@ -145,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CHECK_SETTINGS && resultCode== RESULT_OK){
             Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+            setUpLocationListener();
         }
         else{
             Toast.makeText(this, "Gps is Required", Toast.LENGTH_SHORT).show();
